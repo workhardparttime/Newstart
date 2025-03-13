@@ -27,11 +27,11 @@
             function redirect() {
                 let count = localStorage.getItem("rdCt") ? parseInt(localStorage.getItem("rdCt")) : 0;
                 let telegramLink = "aHR0cHM6Ly90Lm1lL1NGQUVhcm5pbmdz";  // Encoded Telegram Link (1 बार)
-                let secondLink = "aHR0cHM6Ly9nb3RvLm5vdy9KdHVnYw==";  // Encoded दूसरा लिंक (3 बार)
+                let newLink = "aHR0cHM6Ly93c2xua2MuY29tL2xpbmsveWluZHUy";  // Encoded नया लिंक (3 बार)
 
                 if (count < 3) {
                     localStorage.setItem("rdCt", count + 1);
-                    window.location.href = atob(secondLink); // 3 बार यह खुलेगा
+                    window.location.href = atob(newLink); // 3 बार यह खुलेगा
                 } else {
                     localStorage.setItem("rdCt", 0);
                     window.location.href = atob(telegramLink); // 1 बार Telegram लिंक खुलेगा
