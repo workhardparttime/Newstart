@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Redirect</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            // पहले count को पढ़ें, अगर न हो तो 0 सेट करें
+            let count = localStorage.getItem("redirectCount");
+            count = count ? parseInt(count) : 0;
+
+            // लिंक सेट करें
+            let link1 = "https://goto.now/Jtugc"; // पहला लिंक
+            let link2 = "https://t.me/SFAEarnings"; // दूसरा लिंक
+
+            // अगर 3 बार दूसरा लिंक ओपन हो चुका है, तो पहले लिंक पर रीडायरेक्ट करें
+            if (count < 3) {
+                window.location.href = link2;
+                localStorage.setItem("redirectCount", count + 1);
+            } else {
+                window.location.href = link1;
+                localStorage.setItem("redirectCount", 0); // फिर से 0 कर दें
+            }
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>
