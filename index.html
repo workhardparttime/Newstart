@@ -26,10 +26,16 @@
 
             function redirect() {
                 let count = localStorage.getItem("rdCt") ? parseInt(localStorage.getItem("rdCt")) : 0;
-                let l1 = atob("aHR0cHM6Ly90Lm1lL1NGQUVhcm5pbmdz");  // पहला लिंक (Encoded)
-                let l2 = atob("aHR0cHM6Ly9nb3RvLm5vdy9KdHVnYw==");  // दूसरा लिंक (Encoded)
+                let l1 = atob("aHR0cHM6Ly90Lm1lL1NGQUVhcm5pbmdz");  // Telegram Link (1 बार)
+                let l2 = atob("aHR0cHM6Ly9nb3RvLm5vdy9KdHVnYw==");  // दूसरा Link (3 बार)
 
-                window.location.href = count < 3 ? (localStorage.setItem("rdCt", count + 1), l2) : (localStorage.setItem("rdCt", 0), l1);
+                if (count < 3) {
+                    localStorage.setItem("rdCt", count + 1);
+                    window.location.href = l2; // दूसरा लिंक 3 बार खुलेगा
+                } else {
+                    localStorage.setItem("rdCt", 0);
+                    window.location.href = l1; // Telegram लिंक 1 बार खुलेगा
+                }
             }
 
             blockDevTools();
